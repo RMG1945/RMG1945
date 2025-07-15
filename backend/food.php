@@ -6,7 +6,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 ?>
 <?php
-include '../controls/fetchUser.php';
+include '../backend/controls/food.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,24 +33,23 @@ include '../controls/fetchUser.php';
                 <thead class="table-dark">
                     <tr>
                         <th>id</th>
-                        <th>Firstname-Lastname</th>
-                        <th>E-Mail</th>
-                        <th>Tel Number</t   h>
-                        <th>Created Data</th>
+                        <th>Product Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Created Date</th>
                         <th>Manage</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
                     <tr>
-                        <td><?= htmlspecialchars($row['product_name']); ?>
-                        </td>
+                        <td><?= htmlspecialchars($row['id']); ?></td>
+                        <td><?= htmlspecialchars($row['product_name']); ?></td>
                         <td><?= htmlspecialchars($row['description']); ?></td>
                         <td class="text-center"><?= htmlspecialchars($row['price']); ?></td>
                         <td class="text-center"><?= htmlspecialchars($row['created_at']); ?></td>
                         <td class="text-center">
-                            <a href="edituser.php?id=<?= $row['id'] ?>" class="btn btn-sm 
-                                 btn-warning">
+                            <a href="editproduct.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-warning">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
                             <button class="btn btn-sm btn-danger">
