@@ -1,0 +1,9 @@
+<?php
+    include './backend/controls/db.php';
+
+    //ดึงข้อมูลผู้ใช้งานตาม id
+    $id = $_GET['id'];
+    $stmt = $pdo->prepare("SELECT * FROM user WHERE id = ?");
+    $stmt->execute([$id]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
